@@ -15,6 +15,7 @@ spec:
     shortNames:
     - vsr
   scope: Namespaced
+  preserveUnknownFields: false
   versions:
   - name: v1
     schema:
@@ -647,3 +648,5 @@ spec:
     - name: Age
       type: date
       jsonPath: .metadata.creationTimestamp
+    subresources:
+      status: {}

@@ -15,6 +15,7 @@ spec:
     shortNames:
     - gc
   scope: Namespaced
+  preserveUnknownFields: false
   versions:
   - name: v1alpha1
     schema:
