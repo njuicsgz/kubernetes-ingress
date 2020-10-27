@@ -33,14 +33,16 @@ endif
 
 verify-crds:
 ifneq ($(BUILD_IN_CONTAINER),1)
-	./hack/verify-crds.sh
+	./hack/verify-crds.sh crds
+	./hack/verify-crds.sh crds-v1beta1
 endif
 
 update-codegen:
 	./hack/update-codegen.sh
 
 update-crds:
-	controller-gen schemapatch:manifests=./deployments/common/ paths=./pkg/apis/configuration/... output:dir=./deployments/common
+	controller-gen schemapatch:manifests=./deployments/common/crds/ paths=./pkg/apis/configuration/... output:dir=./deployments/common/crds
+	controller-gen schemapatch:manifests=./deployments/common/crds-v1beta1/ paths=./pkg/apis/configuration/... output:dir=./deployments/common/crds-v1beta1
 
 certificate-and-key:
 ifeq ($(GENERATE_DEFAULT_CERT_AND_KEY),1)
